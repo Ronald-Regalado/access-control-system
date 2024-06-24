@@ -25,7 +25,7 @@ namespace AccessControlSystem.AppConsole
 
             //Creando entidades para la BD
             User user1 = new User("Ronald", "Regalado Batista", "01022065449", Guid.NewGuid());
-            User user2 = new User("Carlos Daniel", "Fernández Ramos", "01058584759", Guid.NewGuid());
+            User user2 = new User("Carlos Daniel", "Fernández Ramos", "01027854223", Guid.NewGuid());
 
             Unit unit1 = new Unit("Siemens", "S0102", Guid.NewGuid());
             Unit unit2 = new Unit("Schnaider Electric", "SE2001", Guid.NewGuid());

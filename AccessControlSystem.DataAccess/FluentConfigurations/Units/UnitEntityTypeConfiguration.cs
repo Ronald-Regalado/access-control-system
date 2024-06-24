@@ -16,6 +16,7 @@ namespace AccessControlSystem.DataAccess.FluentConfigurations.Units
         public  void Configure(EntityTypeBuilder<Unit> builder)
         {
             builder.ToTable("Units");
+            builder.HasAlternateKey(x=>x.Code);
             
         }
     }

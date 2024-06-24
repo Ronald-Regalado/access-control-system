@@ -17,6 +17,7 @@ namespace AccessControlSystem.DataAccess.FluentConfigurations.Users
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("Users");
+            builder.HasAlternateKey(x => x.CI);
             builder.OwnsOne(x => x.Contact);
             builder.OwnsOne(x => x.Location);
 
