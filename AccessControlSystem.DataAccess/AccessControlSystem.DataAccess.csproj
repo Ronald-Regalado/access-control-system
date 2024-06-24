@@ -7,19 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="FluentConfigurations\Common\" />
-    <Folder Include="FluentConfigurations\UserSchedules\" />
-    <Folder Include="FluentConfigurations\UserSessions\" />
-    <Folder Include="FluentConfigurations\Users\" />
-    <Folder Include="FluentConfigurations\Units\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.27">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AccessControlSystem.Domain\AccessControlSystem.Domain.csproj" />
   </ItemGroup>
 
 </Project>

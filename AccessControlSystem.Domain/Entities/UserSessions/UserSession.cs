@@ -31,12 +31,13 @@ namespace AccessControlSystem.Domain.Entities.UserSessions
         /// <summary>
         /// Fecha de inicio de sesión
         /// </summary>
-        public DateTime StartTime { get; }
+        public DateTime StartTime { get; protected set; }
         /// <summary>
         /// Fecha de fin de sesión
         /// </summary>
         public DateTime? EndTime { get; set; }
         #endregion
+
         /// <summary>
         /// Constructor del objeto sesión de usuario
         /// </summary>
