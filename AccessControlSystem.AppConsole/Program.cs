@@ -22,7 +22,7 @@ namespace AccessControlSystem.AppConsole
             {
                 applicationContext.Database.Migrate();
             }
-
+         
             //Creando entidades para la BD
             User user1 = new User("Ronald", "Regalado Batista", "01022065449", Guid.NewGuid());
             User user2 = new User("Carlos Daniel", "Fernández Ramos", "01027854223", Guid.NewGuid());
@@ -30,7 +30,8 @@ namespace AccessControlSystem.AppConsole
             Unit unit1 = new Unit("Siemens", "S0102", Guid.NewGuid());
             Unit unit2 = new Unit("Schnaider Electric", "SE2001", Guid.NewGuid());
 
-            UserSession sesion = new UserSession(user1, unit1, Guid.NewGuid());
+            UserSession sesion1 = new UserSession(user1, unit1, Guid.NewGuid());
+            UserSession sesion2 = new UserSession(user2, unit1, Guid.NewGuid());
             UserSchedule schedule = new UserSchedule(user2, Guid.NewGuid());
 
             //Almacenando entidades en BD
@@ -40,28 +41,31 @@ namespace AccessControlSystem.AppConsole
             applicationContext.Units.Add(unit1);
             applicationContext.Units.Add(unit2);
 
-            applicationContext.Sessions.Add(sesion);
+            applicationContext.Sessions.Add(sesion1);
+            applicationContext.Sessions.Add(sesion2);
             applicationContext.Schedules.Add(schedule);
 
             applicationContext.SaveChanges();
 
             //Lectura de BD
-            User? userFronSession = applicationContext.Set<User>().FirstOrDefault(u => u.Id == sesion.UserId);
-            Unit? unitFronSession = applicationContext.Set<Unit>().FirstOrDefault(u => u.Id == sesion.UnitId);
+            User? userFronSession = applicationContext.Set<User>().FirstOrDefault(u => u.Id == sesion1.UserId);
+            Unit? unitFronSession = applicationContext.Set<Unit>().FirstOrDefault(u => u.Id == sesion2.UnitId);
 
             //Actualización de BD
             unit2.Maker = "Siemens";
+            schedule.Schedule.Add(DateTime.Now,"Se guardo correctamente");
 
             applicationContext.Update(unit2);
+            applicationContext.Update(schedule);
             applicationContext.SaveChanges();
 
             Unit? modifiedUnit=applicationContext.Set<Unit>().FirstOrDefault(u=>u.Id == unit2.Id);
-            Console.WriteLine($"Rectificada marca de la unidad #2 a{unit2.Maker}");
+            Console.WriteLine($"Rectificada marca de la unidad #2 a {unit2.Maker}");
 
             //Eliminando entidad
-            applicationContext.Remove(schedule);
-            applicationContext.SaveChanges(true);
-             UserSchedule? deletedSchedule= applicationContext.Set<UserSchedule>().FirstOrDefault(s => s.Id == schedule.Id);
+           applicationContext.Remove(sesion2);
+           applicationContext.SaveChanges(true);
+           UserSchedule? deletedSchedule= applicationContext.Set<UserSchedule>().FirstOrDefault(s => s.Id == schedule.Id);
         }
     }
 }

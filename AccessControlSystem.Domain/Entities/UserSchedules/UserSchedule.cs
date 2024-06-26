@@ -2,6 +2,7 @@
 using AccessControlSystem.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,9 @@ namespace AccessControlSystem.Domain.Entities.UserSchedules
         /// <summary>
         /// Horario del usuario y descripcion
         /// </summary>
-      //  public Dictionary<DateTime, string>? Schedule { get; set; }
+       
+        public Dictionary<DateTime, string>? Schedule { get; set; }
+         // public string? ScheduleJson { get; set; }
         #endregion
 
         /// <summary>
@@ -35,7 +38,7 @@ namespace AccessControlSystem.Domain.Entities.UserSchedules
         public UserSchedule(User user, Guid id) : base(id)
         {
             User = user;
-            // Schedule = new Dictionary<DateTime, string>();
+            Schedule = new Dictionary<DateTime, string>();
         }
         protected UserSchedule() { }
     }
