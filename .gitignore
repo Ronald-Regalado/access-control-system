@@ -363,3 +363,7 @@ MigrationBackup/
 FodyWeavers.xsd
 /AccessControlSystem.DataAccess/Migrations/20240624063327_Initial.cs
 /AccessControlSystem.DataAccess/Migrations/ApplicationContextModelSnapshot.cs
+/AccessControlSystem.DataAccess/Migrations/20240626072206_Initial.cs
+/AccessControlSystem.DataAccess/Migrations/20240626073150_Initial.cs
+/AccessControlSystem.DataAccess/Migrations/20240626075307_Initial.cs
+/AccessControlSystem.DataAccess/Migrations/20240626075307_Initial.Designer.cs
