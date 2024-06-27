@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlSystem.Domain"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlSystem.DataAccess", "AccessControlSystem.DataAccess\AccessControlSystem.DataAccess.csproj", "{9AAFA0E2-3025-4880-97C0-BE884731C312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlSystem.AppConsole", "AccessControlSystem.AppConsole\AccessControlSystem.AppConsole.csproj", "{8147A545-5B85-4CC6-BAE7-29D2477C7F40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlSystem.AppConsole", "AccessControlSystem.AppConsole\AccessControlSystem.AppConsole.csproj", "{8147A545-5B85-4CC6-BAE7-29D2477C7F40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
