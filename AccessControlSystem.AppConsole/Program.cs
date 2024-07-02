@@ -38,8 +38,8 @@ namespace AccessControlSystem.AppConsole
             applicationContext.Users.Add(user1);
             applicationContext.Users.Add(user2);
 
-            applicationContext.Units.Add(unit1);
-            applicationContext.Units.Add(unit2);
+            applicationContext.UserSessions.Add(unit1);
+            applicationContext.UserSessions.Add(unit2);
 
             applicationContext.Sessions.Add(sesion1);
             applicationContext.Sessions.Add(sesion2);

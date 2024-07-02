@@ -11,7 +11,7 @@ namespace AccessControlSystem.Contracts.UserSessions
     /// Describe las funcionalidades necesarias
     /// para dar persistencia a UserSession.
     /// </summary>
-    public interface IUserSessionsRepository
+    public interface IUserSessionRepository
     {
         /// <summary>
         /// Añade una sesion de usuario al soporte de datos.

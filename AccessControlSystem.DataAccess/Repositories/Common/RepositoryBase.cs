@@ -1,5 +1,4 @@
 ﻿using AccessControlSystem.DataAccess.Contexts;
-using AccessControlSystem.DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.Collections.Generic;
