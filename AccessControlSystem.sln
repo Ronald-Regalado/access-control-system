@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlSystem.AppCons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlSystem.Contracts", "AccessControlSystem.Contracts\AccessControlSystem.Contracts.csproj", "{FF87D434-6A8D-4A2D-8875-3765074FA506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlSystemDataAccess.Tests", "TestProject1\AccessControlSystemDataAccess.Tests.csproj", "{F6078D07-B125-406D-8659-5E60FD901A80}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlSystem.DataAccess.Tests", "TestProject1\AccessControlSystem.DataAccess.Tests.csproj", "{F6078D07-B125-406D-8659-5E60FD901A80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
