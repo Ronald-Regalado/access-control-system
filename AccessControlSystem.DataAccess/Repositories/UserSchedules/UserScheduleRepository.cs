@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccessControlSystem.Contracts.UsersSchedules
+namespace AccessControlSystem.DataAccess.Repositories.UserSchedules
 {
-    internal interface IUserSessionRepository
+    internal class UserScheduleRepository
     {
     }
 }

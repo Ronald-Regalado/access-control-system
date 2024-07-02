@@ -2,7 +2,7 @@
 using AccessControlSystem.Contracts;
 using Microsoft.EntityFrameworkCore;
 
-namespace CarDealer.DataAccess
+namespace AccessControlSystem.DataAccess
 {
     /// <summary>
     /// Implementación de <see cref="IUnitOfWork"/>.

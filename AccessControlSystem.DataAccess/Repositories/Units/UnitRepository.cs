@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccessControlSystem.DataAccess.Abstract
+namespace AccessControlSystem.DataAccess.Repositories.Units
 {
-    public interface IRepository
+    internal class UnitRepository
     {
-
-
-
     }
 }

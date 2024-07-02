@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccessControlSystem.Contracts
+namespace AccessControlSystem.DataAccess.Repositories.Users
 {
-  public interface IUnitofWork
+    internal class UserRepository
     {
-        void SaveChanges();
     }
 }
