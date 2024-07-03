@@ -1,26 +1,143 @@
 using AccessControlSystem.Contracts;
-using CarDealer.Contracts.Vehicles;
-using CarDealer.DataAccess.Contexts;
-using CarDealer.DataAccess.Repositories.Vehicles;
-using CarDealer.DataAccess.Tests.Utilities;
-using CarDealer.Domain.Abstract;
-using CarDealer.Domain.Entities.Vehicles;
-using CarDealer.Domain.Types;
-using CarDealer.Domain.ValueObjects;
+using AccessControlSystem.Contracts.Units;
+using AccessControlSystem.DataAccess.Contexts;
+using AccessControlSystem.DataAccess.Repositories.Units;
+using AccessControlSystem.DataAccess.Tests.Utilities;
+using AccessControlSystem.Domain.Entities.Units;
+using AccessControlSystem.Domain.Common;
+using AccessControlSystem.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace TestProject1
+using AccessControlSystem.DataAccess;
+using System.Diagnostics;
+using System.Runtime.ConstrainedExecution;
+namespace AccessControlSystem.DataAccess.Tests.UnitTests
 {
     [TestClass]
     public class UnitTests
     {
-        [TestMethod]
-        public void TestMethod1()
+
+        private IUnitRepository _unitRepository;
+
+        private IUnitOfWork _unitOfWork;
+
+
+        public UnitTests()
         {
+            ApplicationContext context =
+                new ApplicationContext(ConnectionStringProvider.GetConnectionString());
+            _unitRepository = new UnitRepository(context);
+            _unitOfWork = new UnitOfWork(context);
         }
+
+        [DataRow("Siemens", "S0102")]
+        [DataRow("Schnaider Electric", "SE2001")]
+        [TestMethod]
+        public void Can_Add_Unit(
+            string maker,
+            string code)
+        {
+            // Arrange
+            Guid id = Guid.NewGuid();
+            Unit unit = new Unit(
+              
+                maker,
+                code,
+                id
+                );
+
+            // Execute
+            _unitRepository.AddUnit(unit);
+            _unitOfWork.SaveChanges();
+
+            // Assert
+            Unit? loadedUnit = _unitRepository.GetUnitById<Unit>(id);
+            Assert.IsNotNull(loadedUnit);
+        }
+
+        
+
+        [DataRow(0)]
+        [TestMethod]
+        public void Can_Get_Unit_By_Id(int position)
+        {
+            // Arrange
+            var units = _unitRepository.GetAllUnits<Unit>().ToList();
+            Assert.IsNotNull(units);
+            Assert.IsTrue(position < units.Count);
+            Unit unitToGet = units[position];
+
+            // Execute
+            Unit? loadedUnit = _unitRepository.GetUnitById<Unit>(unitToGet.Id);
+
+            // Assert
+            Assert.IsNotNull(loadedUnit);
+        }
+
+     
+
+         
+
+        [TestMethod]
+        public void Cannot_Get_Unit_By_Invalid_Id()
+        {
+            // Arrange
+
+            // Execute
+            Unit? loadedUnit = _unitRepository.GetUnitById<Unit>(Guid.Empty);
+
+            // Assert
+            Assert.IsNull(loadedUnit);
+        }
+
+        [DataRow("Schnaider Electric", "SE2001",true , 4)]
+        [TestMethod]
+        public void Can_Update_Unit( string maker, string code, bool isInUse, int position)
+        {
+            // Arrange
+            var units = _unitRepository.GetAllUnits<Unit>().ToList();
+            Assert.IsNotNull(units);
+            Assert.IsTrue(position < units.Count);
+            Unit unitToUpdate = units[position];
+
+            // Execute
+            unitToUpdate.Maker = maker;
+            unitToUpdate.Code = code;
+            unitToUpdate.IsInUse = isInUse;
+            _unitRepository.UpdateUnit(unitToUpdate);
+            _unitOfWork.SaveChanges();
+
+            // Assert
+            Unit? loadedUnit = _unitRepository.GetUnitById<Unit>(unitToUpdate.Id);
+            Assert.IsNotNull(loadedUnit);
+            Assert.AreEqual(loadedUnit.Maker, maker);
+            Assert.AreEqual(loadedUnit.Code, code);
+            Assert.AreEqual(loadedUnit.IsInUse, isInUse);
+        }
+
+        [DataRow(0)]
+        [TestMethod]
+        public void Can_Delete_Unit(int position)
+        {
+            // Arrange
+            var units = _unitRepository.GetAllUnits<Unit>().ToList();
+            Assert.IsNotNull(units);
+            Assert.IsTrue(position < units.Count);
+            Unit unitToDelete = units[position];
+
+            // Execute
+            _unitRepository.DeleteUnit(unitToDelete);
+            _unitOfWork.SaveChanges();
+
+            // Assert
+            Unit? loadedUnit = _unitRepository.GetUnitById<Unit>(unitToDelete.Id);
+            Assert.IsNull(loadedUnit);
+        }
+
+
     }
 }

@@ -1,5 +1,6 @@
-﻿using AccessControlSystem.DataAccess.Contexts;
-using AccessControlSystem.Contracts;
+﻿using AccessControlSystem.Contracts;
+using AccessControlSystem.DataAccess.Contexts;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace AccessControlSystem.DataAccess

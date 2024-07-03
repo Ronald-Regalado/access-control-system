@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccessControlSystem.Contracts
+namespace AccessControlSystem.DataAccess.Tests
 {
-  public interface IUnitOfWork
+    internal class Class1
     {
-        void SaveChanges();
     }
 }

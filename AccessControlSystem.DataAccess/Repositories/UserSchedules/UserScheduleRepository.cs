@@ -21,12 +21,12 @@ namespace AccessControlSystem.DataAccess.Repositories.UserSchedules
 
         public void AddUserSchedule(UserSchedule userSchedule)
         {
-            _context.UserSessions.Add(userSchedule);
+            _context.UserSchedules.Add(userSchedule);
         }
 
         public void DeleteUserSchedule(UserSchedule userSchedule)
         {
-            _context.UserSessions.Remove(userSchedule);
+            _context.UserSchedules.Remove(userSchedule);
         }
 
         public IEnumerable<T> GetAllUserSchedules<T>() where T : UserSchedule
@@ -41,7 +41,7 @@ namespace AccessControlSystem.DataAccess.Repositories.UserSchedules
 
         public void UpdateUserSchedule(UserSchedule userSchedule)
         {
-            _context.UserSessions.Update(userSchedule);
+            _context.UserSchedules.Update(userSchedule);
         }
     }
 }

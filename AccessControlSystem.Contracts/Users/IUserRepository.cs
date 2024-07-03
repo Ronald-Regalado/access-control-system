@@ -17,7 +17,7 @@ namespace AccessControlSystem.Contracts.Users
         /// Añade un usuario al soporte de datos.
         /// </summary>
         /// <param name="user">Usuario a añadir.</param>
-        void AddUnit(User user);
+        void AddUser(User user);
 
         /// <summary>
         /// Obtiene un usuario del soporte de datos a partir de su identificador.
