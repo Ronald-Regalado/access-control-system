@@ -21,27 +21,27 @@ namespace AccessControlSystem.DataAccess.Repositories.Units
 
         public void AddUnit(Unit unit)
         {
-            _context.UserSessions.Add(unit);
+            _context.Units.Add(unit);
         }
 
         public void DeleteUnit(Unit unit)
         {
-            _context.UserSessions.Remove(unit);
+            _context.Units.Remove(unit);
         }
 
-        public IEnumerable<T> GetAllUnits<T>() where T : Unit
+        public IEnumerable<Unit> GetAllUnits()
         {
-            return _context.Set<T>().ToList();
+            return _context.Units.ToList();
         }
 
-        public T? GetUnitById<T>(Guid id) where T : Unit
+        public Unit? GetUnitById(Guid id)
         {
-            return _context.Set<T>().FirstOrDefault(i => i.Id == id);
+            return _context.Units.FirstOrDefault(i => i.Id == id);
         }
 
         public void UpdateUnit(Unit unit)
         {
-            _context.UserSessions.Update(unit);
+            _context.Units.Update(unit);
         }
     }
 }

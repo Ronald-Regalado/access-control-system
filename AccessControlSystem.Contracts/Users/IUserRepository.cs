@@ -25,14 +25,14 @@ namespace AccessControlSystem.Contracts.Users
         /// <typeparam name="T">Tipo de usuario a obtener</typeparam>
         /// <param name="id">Identificador del User.</param>
         /// <returns>User obtenido del soporte de datos; de no existir, <see langword="null"/>.</returns>
-        T? GetUserById<T>(Guid id) where T : User;
+        User? GetUserById(Guid id);
 
         /// <summary>
         /// Obtiene todos los usuarios del soporte de datos.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        ///
         /// <returns></returns>
-        IEnumerable<T> GetAllUsers<T>() where T : User;
+        IEnumerable<User> GetAllUsers();
 
         /// <summary>
         /// Actualiza el valor de un usuario en el soporte de datos.

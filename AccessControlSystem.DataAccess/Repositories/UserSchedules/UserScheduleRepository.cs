@@ -21,27 +21,27 @@ namespace AccessControlSystem.DataAccess.Repositories.UserSchedules
 
         public void AddUserSchedule(UserSchedule userSchedule)
         {
-            _context.UserSchedules.Add(userSchedule);
+            _context.Schedules.Add(userSchedule);
         }
 
         public void DeleteUserSchedule(UserSchedule userSchedule)
         {
-            _context.UserSchedules.Remove(userSchedule);
+            _context.Schedules.Remove(userSchedule);
         }
 
-        public IEnumerable<T> GetAllUserSchedules<T>() where T : UserSchedule
+        public IEnumerable<UserSchedule> GetAllUserSchedules()
         {
-            return _context.Set<T>().ToList();
+            return _context.Schedules.ToList();
         }
 
-        public T? GetUserScheduleById<T>(Guid id) where T : UserSchedule
+        public UserSchedule? GetUserScheduleById(Guid id)
         {
-            return _context.Set<T>().FirstOrDefault(i => i.Id == id);
+            return _context.Schedules.FirstOrDefault(i => i.Id == id);
         }
 
         public void UpdateUserSchedule(UserSchedule userSchedule)
         {
-            _context.UserSchedules.Update(userSchedule);
+            _context.Schedules.Update(userSchedule);
         }
     }
 }

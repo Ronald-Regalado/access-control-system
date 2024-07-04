@@ -55,7 +55,7 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
             _unitOfWork.SaveChanges();
 
             // Assert
-            Unit? loadedUnit = _unitRepository.GetUnitById<Unit>(id);
+            Unit? loadedUnit = _unitRepository.GetUnitById(id);
             Assert.IsNotNull(loadedUnit);
         }
 
@@ -66,13 +66,13 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
         public void Can_Get_Unit_By_Id(int position)
         {
             // Arrange
-            var units = _unitRepository.GetAllUnits<Unit>().ToList();
+            var units = _unitRepository.GetAllUnits().ToList();
             Assert.IsNotNull(units);
             Assert.IsTrue(position < units.Count);
             Unit unitToGet = units[position];
 
             // Execute
-            Unit? loadedUnit = _unitRepository.GetUnitById<Unit>(unitToGet.Id);
+            Unit? loadedUnit = _unitRepository.GetUnitById(unitToGet.Id);
 
             // Assert
             Assert.IsNotNull(loadedUnit);
@@ -88,7 +88,7 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
             // Arrange
 
             // Execute
-            Unit? loadedUnit = _unitRepository.GetUnitById<Unit>(Guid.Empty);
+            Unit? loadedUnit = _unitRepository.GetUnitById(Guid.Empty);
 
             // Assert
             Assert.IsNull(loadedUnit);
@@ -99,7 +99,7 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
         public void Can_Update_Unit( string maker, string code, bool isInUse, int position)
         {
             // Arrange
-            var units = _unitRepository.GetAllUnits<Unit>().ToList();
+            var units = _unitRepository.GetAllUnits().ToList();
             Assert.IsNotNull(units);
             Assert.IsTrue(position < units.Count);
             Unit unitToUpdate = units[position];
@@ -112,7 +112,7 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
             _unitOfWork.SaveChanges();
 
             // Assert
-            Unit? loadedUnit = _unitRepository.GetUnitById<Unit>(unitToUpdate.Id);
+            Unit? loadedUnit = _unitRepository.GetUnitById(unitToUpdate.Id);
             Assert.IsNotNull(loadedUnit);
             Assert.AreEqual(loadedUnit.Maker, maker);
             Assert.AreEqual(loadedUnit.Code, code);
@@ -124,7 +124,7 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
         public void Can_Delete_Unit(int position)
         {
             // Arrange
-            var units = _unitRepository.GetAllUnits<Unit>().ToList();
+            var units = _unitRepository.GetAllUnits().ToList();
             Assert.IsNotNull(units);
             Assert.IsTrue(position < units.Count);
             Unit unitToDelete = units[position];
@@ -134,7 +134,7 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
             _unitOfWork.SaveChanges();
 
             // Assert
-            Unit? loadedUnit = _unitRepository.GetUnitById<Unit>(unitToDelete.Id);
+            Unit? loadedUnit = _unitRepository.GetUnitById(unitToDelete.Id);
             Assert.IsNull(loadedUnit);
         }
 

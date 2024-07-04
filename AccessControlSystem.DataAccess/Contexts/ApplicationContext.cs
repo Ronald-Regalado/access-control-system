@@ -27,7 +27,7 @@ namespace AccessControlSystem.DataAccess.Contexts
         /// <summary>
         /// Tabla de unidades
         /// </summary>
-        public DbSet<Unit> UserSessions { get; set; }
+        public DbSet<Unit> Units { get; set; }
         /// <summary>
         /// Tabla de sesiones de usuario
         /// </summary>

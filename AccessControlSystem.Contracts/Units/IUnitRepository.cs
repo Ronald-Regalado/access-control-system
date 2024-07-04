@@ -25,14 +25,13 @@ namespace AccessControlSystem.Contracts.Units
         /// <typeparam name="T">Tipo de unidad a obtener</typeparam>
         /// <param name="id">Identificador de la unidad.</param>
         /// <returns>Cliente obtenido del soporte de datos; de no existir, <see langword="null"/>.</returns>
-        T? GetUnitById<T>(Guid id) where T : Unit;
+        Unit? GetUnitById(Guid id);
 
         /// <summary>
         /// Obtiene todas las unidades del soporte de datos.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        IEnumerable<T> GetAllUnits<T>() where T : Unit;
+        IEnumerable<Unit> GetAllUnits();
 
         /// <summary>
         /// Actualiza el valor de una unidad en el soporte de datos.

@@ -50,8 +50,8 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
             Guid id = Guid.NewGuid();
             User user = new User(
 
-                ,
-                ,
+                
+           
                 
                 );
 
@@ -71,13 +71,13 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
         public void Can_Get_User_By_Id(int position)
         {
             // Arrange
-            var users = _userRepository.GetAllUsers<User>().ToList();
+            var users = _userRepository.GetAllUsers().ToList();
             Assert.IsNotNull(users);
             Assert.IsTrue(position < users.Count);
             User userToGet = users[position];
 
             // Execute
-            User? loadedUser = _userRepository.GetUserById<User>(userToGet.Id);
+            User? loadedUser = _userRepository.GetUserById(userToGet.Id);
 
             // Assert
             Assert.IsNotNull(loadedUser);
@@ -93,7 +93,7 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
             // Arrange
 
             // Execute
-            User? loadedUser = _userRepository.GetUserById<User>(Guid.Empty);
+            User? loadedUser = _userRepository.GetUserById(Guid.Empty);
 
             // Assert
             Assert.IsNull(loadedUser);
@@ -104,7 +104,7 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
         public void Can_Update_User(string maker, string code, bool isInUse, int position)
         {
             // Arrange
-            var users = _userRepository.GetAllUsers<User>().ToList();
+            var users = _userRepository.GetAllUsers().ToList();
             Assert.IsNotNull(users);
             Assert.IsTrue(position < users.Count);
             User userToUpdate = users[position];

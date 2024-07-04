@@ -22,17 +22,15 @@ namespace AccessControlSystem.Contracts.UserSessions
         /// <summary>
         /// Obtiene una sesion de usuario del soporte de datos a partir de su identificador.
         /// </summary>
-        /// <typeparam name="T">Tipo de sesion a obtener</typeparam>
         /// <param name="id">Identificador de la sesion.</param>
         /// <returns>sesion obtenida del soporte de datos; de no existir, <see langword="null"/>.</returns>
-        T? GetUserSessionById<T>(Guid id) where T : UserSession;
+        UserSession? GetUserSessionById(Guid id);
 
         /// <summary>
         /// Obtiene todas las sesiones del soporte de datos.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        IEnumerable<T> GetAllUserSessions<T>() where T : UserSession;
+        IEnumerable<UserSession> GetAllUserSessions();
 
         /// <summary>
         /// Actualiza el valor de una sesion en el soporte de datos.

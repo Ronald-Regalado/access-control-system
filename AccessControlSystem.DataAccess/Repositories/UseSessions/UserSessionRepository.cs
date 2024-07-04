@@ -22,27 +22,27 @@ namespace AccessControlSystem.DataAccess.Repositories.UserSessions
 
         public void AddUserSession(UserSession userSession)
         {
-            _context.UserSessions.Add(userSession);
+            _context.Sessions.Add(userSession);
         }
 
         public void DeleteUserSession(UserSession userSession)
         {
-            _context.UserSessions.Remove(userSession);
+            _context.Sessions.Remove(userSession);
         }
 
-        public IEnumerable<T> GetAllUserSessions<T>() where T : UserSession
+        public IEnumerable<UserSession> GetAllUserSessions()
         {
-            return _context.Set<T>().ToList();
+            return _context.Sessions.ToList();
         }
 
-        public T? GetUserSessionById<T>(Guid id) where T : UserSession
+        public UserSession? GetUserSessionById(Guid id)
         {
-            return _context.Set<T>().FirstOrDefault(i => i.Id == id);
+            return _context.Sessions.FirstOrDefault(i => i.Id == id);
         }
 
         public void UpdateUserSession(UserSession userSession)
         {
-            _context.UserSessions.Update(userSession);
+            _context.Sessions.Update(userSession);
         }
     }
 }

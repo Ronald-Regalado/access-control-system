@@ -29,14 +29,14 @@ namespace AccessControlSystem.DataAccess.Repositories.Users
             _context.Users.Remove(user);
         }
 
-        public IEnumerable<T> GetAllUsers<T>() where T : User
+        public IEnumerable<User> GetAllUsers()
         {
-            return _context.Set<T>().ToList();
+            return _context.Users.ToList();
         }
 
-        public T? GetUserById<T>(Guid id) where T : User
+        public User? GetUserById(Guid id) 
         {
-            return _context.Set<T>().FirstOrDefault(i => i.Id == id);
+            return _context.Users.FirstOrDefault(i => i.Id == id);
         }
 
         public void UpdateUser(User user)
