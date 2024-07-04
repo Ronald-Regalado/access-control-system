@@ -31,7 +31,7 @@ namespace AccessControlSystem.Domain.Entities.UserSessions
         /// <summary>
         /// Fecha de inicio de sesión
         /// </summary>
-        public DateTime StartTime { get; protected set; }
+        public DateTime StartTime { get; set; }
         /// <summary>
         /// Fecha de fin de sesión
         /// </summary>

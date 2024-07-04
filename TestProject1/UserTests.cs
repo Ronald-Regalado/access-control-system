@@ -15,7 +15,8 @@ using System.Threading.Tasks;
 using AccessControlSystem.DataAccess;
 using System.Diagnostics;
 using System.Runtime.ConstrainedExecution;
-namespace AccessControlSystem.DataAccess.Tests.UnitTests
+using AccessControlSystem.Domain.Entities.Units;
+namespace AccessControlSystem.DataAccess.Tests.UserTests
 {
     [TestClass]
     public class UserTests
@@ -40,27 +41,19 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
         public void Can_Add_User(
             string firstName,
             string lastName,
-            string ci,
-            Location location,
-            Contact contact,
-            string schoolLevel
+            string ci
            )
         {
             // Arrange
             Guid id = Guid.NewGuid();
-            User user = new User(
-
-                
-           
-                
-                );
+            User user = new User( firstName, lastName,ci,id   );
 
             // Execute
             _userRepository.AddUser(user);
             _unitOfWork.SaveChanges();
 
             // Assert
-            User? loadedUser = _userRepository.GetUserById<User>(id);
+            User? loadedUser = _userRepository.GetUserById(id);
             Assert.IsNotNull(loadedUser);
         }
 
@@ -99,9 +92,9 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
             Assert.IsNull(loadedUser);
         }
 
-        [DataRow("Schnaider Electric", "SE2001", true, 4)]
+        [DataRow("Carlos Daniel", "Fernandez Ramos", "01102968165", 4)]
         [TestMethod]
-        public void Can_Update_User(string maker, string code, bool isInUse, int position)
+        public void Can_Update_User(string firstName, string lastName, string ci, int position)
         {
             // Arrange
             var users = _userRepository.GetAllUsers().ToList();
@@ -110,18 +103,18 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
             User userToUpdate = users[position];
 
             // Execute
-            userToUpdate.Maker = maker;
-            userToUpdate.Code = code;
-            userToUpdate.IsInUse = isInUse;
+            userToUpdate.FirstName = firstName;
+            userToUpdate.LastName = lastName;
+            userToUpdate.CI = ci;
             _userRepository.UpdateUser(userToUpdate);
             _unitOfWork.SaveChanges();
 
             // Assert
-            User? loadedUser = _userRepository.GetAllUsers<User>(userToUpdate.Id);
+            User? loadedUser = _userRepository.GetUserById(userToUpdate.Id);
             Assert.IsNotNull(loadedUser);
-            Assert.AreEqual(loadedUser.Maker, maker);
-            Assert.AreEqual(loadedUser.Code, code);
-            Assert.AreEqual(loadedUser.IsInUse, isInUse);
+            Assert.AreEqual(loadedUser.FirstName, firstName);
+            Assert.AreEqual(loadedUser.LastName,lastName );
+            Assert.AreEqual(loadedUser.CI, ci);
         }
 
         [DataRow(0)]
@@ -129,7 +122,7 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
         public void Can_Delete_User(int position)
         {
             // Arrange
-            var users = _userRepository.GetAllUsers<User>().ToList();
+            var users = _userRepository.GetAllUsers().ToList();
             Assert.IsNotNull(users);
             Assert.IsTrue(position < users.Count);
             User userToDelete = users[position];
@@ -139,7 +132,7 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
             _unitOfWork.SaveChanges();
 
             // Assert
-            User? loadedUser = _userRepository.GetAllUsers<User>(userToDelete.Id);
+            User? loadedUser = _userRepository.GetUserById(userToDelete.Id);
             Assert.IsNull(loadedUser);
         }
 
