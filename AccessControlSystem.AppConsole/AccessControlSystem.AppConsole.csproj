@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AccessControlSystem.Contracts\AccessControlSystem.Contracts.csproj" />
     <ProjectReference Include="..\AccessControlSystem.DataAccess\AccessControlSystem.DataAccess.csproj" />
     <ProjectReference Include="..\AccessControlSystem.Domain\AccessControlSystem.Domain.csproj" />
   </ItemGroup>

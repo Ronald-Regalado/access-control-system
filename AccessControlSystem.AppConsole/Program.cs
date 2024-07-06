@@ -1,8 +1,18 @@
 ﻿using AccessControlSystem.DataAccess.Contexts;
+using AccessControlSystem.DataAccess;
+using AccessControlSystem.DataAccess.Repositories.Units;
+using AccessControlSystem.DataAccess.Repositories.UserSchedules;
+using AccessControlSystem.DataAccess.Repositories.UserSessions;
+using AccessControlSystem.DataAccess.Repositories.Users;
 using AccessControlSystem.Domain.Entities.Units;
 using AccessControlSystem.Domain.Entities.Users;
 using AccessControlSystem.Domain.Entities.UserSchedules;
 using AccessControlSystem.Domain.Entities.UserSessions;
+using AccessControlSystem.Contracts;
+using AccessControlSystem.Contracts.Units;
+using AccessControlSystem.Contracts.Users;
+using AccessControlSystem.Contracts.UserSchedules;
+using AccessControlSystem.Contracts.UserSessions;
 using Microsoft.EntityFrameworkCore;
 
 namespace AccessControlSystem.AppConsole
