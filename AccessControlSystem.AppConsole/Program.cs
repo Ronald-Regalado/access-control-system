@@ -17,10 +17,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AccessControlSystem.AppConsole
 {
-    public class Program
+    internal class Program
     {
-        static void Main(string[] args)
-        {
+        static async Task Main(string[] args)
+        {//Borrando Base de Datos
             if (File.Exists("Data.sqlite"))
                 File.Delete("Data.sqlite");
 
@@ -32,7 +32,15 @@ namespace AccessControlSystem.AppConsole
             {
                 applicationContext.Database.Migrate();
             }
-         
+            //Creando instancias de repositorios y de UnitOfWork
+            IUnitOfWork unitOfWork = new UnitOfWork(applicationContext);
+            IUnitRepository unitRepository = new UnitRepository(applicationContext);
+            IUserRepository userRepository = new UserRepository(applicationContext);
+            IUserScheduleRepository userScheduleRepository = new UserScheduleRepository(applicationContext);
+            IUserSessionRepository userSessionRepository = new UserSessionRepository(applicationContext);
+
+
+
             //Creando entidades para la BD
             User user1 = new User("Ronald", "Regalado Batista", "01022065449", Guid.NewGuid());
             User user2 = new User("Carlos Daniel", "Fernández Ramos", "01027854223", Guid.NewGuid());
@@ -45,37 +53,52 @@ namespace AccessControlSystem.AppConsole
             UserSchedule schedule = new UserSchedule(user2, Guid.NewGuid());
 
             //Almacenando entidades en BD
-            applicationContext.Users.Add(user1);
-            applicationContext.Users.Add(user2);
+            userRepository.AddUser(user1);
+            userRepository.AddUser(user2);
 
-            applicationContext.Units.Add(unit1);
-            applicationContext.Units.Add(unit2);
+            unitRepository.AddUnit(unit1);
+            unitRepository.AddUnit(unit2);
 
-            applicationContext.Sessions.Add(sesion1);
-            applicationContext.Sessions.Add(sesion2);
-            applicationContext.Schedules.Add(schedule);
+            userSessionRepository.AddUserSession(sesion1);
+            userSessionRepository.AddUserSession(sesion2);
 
-            applicationContext.SaveChanges();
+            userScheduleRepository.AddUserSchedule(schedule);
+            
+            
+            //Obteniendo entidades
+            User? userA = userRepository.GetUserById(user1.Id);
+            User? userB = userRepository.GetUserById(user2.Id);
 
-            //Lectura de BD
-            User? userFronSession = applicationContext.Set<User>().FirstOrDefault(u => u.Id == sesion1.UserId);
-            Unit? unitFronSession = applicationContext.Set<Unit>().FirstOrDefault(u => u.Id == sesion2.UnitId);
+
+            //Comprobando
+            if (userA is null || userB is null)
+                Console.WriteLine("Las entidades no se encontraron en BD.");
+            else
+            {
+                Console.WriteLine($"El usuario solicitado es {user1.FirstName} vehículo(s) de marca" +
+                    $" {userB.LastName} {userB.CI}.");
+            }
+        
+
+        
+            
 
             //Actualización de BD
-            unit2.Maker = "Siemens";
-            schedule.Schedule.Add(DateTime.Now,"Se guardo correctamente");
+            //unit2.Maker = "Siemens";
+            //schedule.Schedule.Add(DateTime.Now,"Se guardo correctamente");
 
-            applicationContext.Update(unit2);
-            applicationContext.Update(schedule);
-            applicationContext.SaveChanges();
-
-            Unit? modifiedUnit=applicationContext.Set<Unit>().FirstOrDefault(u=>u.Id == unit2.Id);
+           // unitRepository.UpdateUnit(unit2);
+           // unitOfWork.SaveChanges();
+           // Unit? modifiedUnit= unitRepository.GetUnitById(unit2);
             Console.WriteLine($"Rectificada marca de la unidad #2 a {unit2.Maker}");
 
             //Eliminando entidad
-           applicationContext.Remove(sesion2);
-           applicationContext.SaveChanges(true);
-           UserSchedule? deletedSchedule= applicationContext.Set<UserSchedule>().FirstOrDefault(s => s.Id == schedule.Id);
+            unitRepository.DeleteUnit(unit2);
+            unitOfWork.SaveChanges();
+
+            Unit? deletedUnit = unitRepository.GetUnitById(unit2.Id);
+            if (deletedUnit is null)
+                Console.WriteLine("Unit successfully deleted");
         }
     }
 }
