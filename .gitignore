@@ -367,3 +367,4 @@ FodyWeavers.xsd
 /AccessControlSystem.DataAccess/Migrations/20240626073150_Initial.cs
 /AccessControlSystem.DataAccess/Migrations/20240626075307_Initial.cs
 /AccessControlSystem.DataAccess/Migrations/20240626075307_Initial.Designer.cs
+/AccessControlSystem.DataAccess/Migrations/20240707041459_Initial.cs
