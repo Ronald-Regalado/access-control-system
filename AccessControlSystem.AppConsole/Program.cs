@@ -63,6 +63,8 @@ namespace AccessControlSystem.AppConsole
             userSessionRepository.AddUserSession(sesion2);
 
             userScheduleRepository.AddUserSchedule(schedule);
+
+            unitOfWork.SaveChanges();
             
             
             //Obteniendo entidades
@@ -75,8 +77,8 @@ namespace AccessControlSystem.AppConsole
                 Console.WriteLine("Las entidades no se encontraron en BD.");
             else
             {
-                Console.WriteLine($"El usuario solicitado es {user1.FirstName} vehículo(s) de marca" +
-                    $" {userB.LastName} {userB.CI}.");
+                Console.WriteLine($"Los usuario solicitados son {user1.FirstName}{user1.LastName}  y " +
+                    $" {userB.FirstName} {userB.LastName}.");
             }
         
 
