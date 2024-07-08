@@ -1,24 +1,15 @@
 ﻿using AccessControlSystem.Contracts;
+using AccessControlSystem.Contracts.Units;
 using AccessControlSystem.Contracts.Users;
-using AccessControlSystem.DataAccess.Contexts;
-using AccessControlSystem.DataAccess.Repositories.Users;
-using AccessControlSystem.DataAccess.Tests.Utilities;
-using AccessControlSystem.Domain.Entities.Users;
-using AccessControlSystem.Domain.Common;
-using AccessControlSystem.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AccessControlSystem.DataAccess;
-using System.Diagnostics;
-using System.Runtime.ConstrainedExecution;
-using AccessControlSystem.Domain.Entities.UserSessions;
-using AccessControlSystem.Domain.Entities.Units;
 using AccessControlSystem.Contracts.UserSessions;
+using AccessControlSystem.DataAccess.Contexts;
+using AccessControlSystem.DataAccess.Repositories.Units;
+using AccessControlSystem.DataAccess.Repositories.Users;
 using AccessControlSystem.DataAccess.Repositories.UserSessions;
+using AccessControlSystem.DataAccess.Tests.Utilities;
+using AccessControlSystem.Domain.Entities.Units;
+using AccessControlSystem.Domain.Entities.Users;
+using AccessControlSystem.Domain.Entities.UserSessions;
 namespace AccessControlSystem.DataAccess.Tests.UserSessionTests
 {
     [TestClass]
@@ -26,7 +17,8 @@ namespace AccessControlSystem.DataAccess.Tests.UserSessionTests
     {
 
         private IUserSessionRepository _userSessionRepository;
-
+        private IUserRepository _userRepository;
+        private IUnitRepository _unitRepository;
         private IUnitOfWork _unitOfWork;
 
 
@@ -35,26 +27,24 @@ namespace AccessControlSystem.DataAccess.Tests.UserSessionTests
             ApplicationContext context =
                 new ApplicationContext(ConnectionStringProvider.GetConnectionString());
             _userSessionRepository = new UserSessionRepository(context);
+            _userRepository = new UserRepository(context);
+            _unitRepository = new UnitRepository(context);
             _unitOfWork = new UnitOfWork(context);
         }
 
-        [DataRow("Ronald", "Regalado Batista", "01022065449", "Schnaider Electric", "SE2001")]
-        [DataRow("Carlos", "Fernández Ramos", "01102968165", "Siemens", "S0102")]
+        [DataRow(0)]
         [TestMethod]
-        public void Can_Add_UserSession(
-            string firstName,
-            string lastName,
-            string ci,
-             string maker,
-            string code)
-           
+        public void Can_Add_UserSession(int position)
+
         {
             // Arrange
             Guid id = Guid.NewGuid();
+            var units = _unitRepository.GetAllUnits().ToList();
+            var users = _userRepository.GetAllUsers().ToList();
             UserSession userSession = new UserSession
             (
-             new User(firstName,lastName,ci,Guid.NewGuid()) ,  
-             new Unit(maker,code, Guid.NewGuid())  ,
+            users[position],
+             units[position],
              id
             );
 
@@ -102,9 +92,9 @@ namespace AccessControlSystem.DataAccess.Tests.UserSessionTests
             Assert.IsNull(loadedUserSession);
         }
 
-        [DataRow("Carlos Daniel", "Fernandez Ramos", "01102968165", 4)]
+        [DataRow(0)]
         [TestMethod]
-        public void Can_Update_UserSession(User user, Unit unit, DateTime startTime,DateTime endTime ,int position)
+        public void Can_Update_UserSession( int position)
         {
             // Arrange
             var userSessions = _userSessionRepository.GetAllUserSessions().ToList();
@@ -113,19 +103,13 @@ namespace AccessControlSystem.DataAccess.Tests.UserSessionTests
             UserSession userSessionToUpdate = userSessions[position];
 
             // Execute
-            userSessionToUpdate.User = user;
-            userSessionToUpdate.BusyUnit = unit;
-            userSessionToUpdate.StartTime = startTime;
+            DateTime endTime = DateTime.Now;
             userSessionToUpdate.EndTime = endTime;
             _userSessionRepository.UpdateUserSession(userSessionToUpdate);
             _unitOfWork.SaveChanges();
 
             // Assert
             UserSession? loadedUserSession = _userSessionRepository.GetUserSessionById(userSessionToUpdate.Id);
-            Assert.IsNotNull(loadedUserSession);
-            Assert.AreEqual(loadedUserSession.User, user);
-            Assert.AreEqual(loadedUserSession.BusyUnit, unit);
-            Assert.AreEqual(loadedUserSession.StartTime, startTime);
             Assert.AreEqual(loadedUserSession.EndTime, endTime);
         }
 

@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AccessControlSystem.DataAccess.Tests.Utilities
-{/// <summary>
+{
+/// <summary>
 /// Proveedor de string de conexion
 /// </summary>
     public static class ConnectionStringProvider

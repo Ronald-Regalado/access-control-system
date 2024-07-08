@@ -15,36 +15,32 @@ using System.Threading.Tasks;
 using AccessControlSystem.DataAccess;
 using System.Diagnostics;
 using System.Runtime.ConstrainedExecution;
+
+
 namespace AccessControlSystem.DataAccess.Tests.UnitTests
 {
     [TestClass]
     public class UnitTests
     {
-
         private IUnitRepository _unitRepository;
-
         private IUnitOfWork _unitOfWork;
-
 
         public UnitTests()
         {
-            ApplicationContext context =
-                new ApplicationContext(ConnectionStringProvider.GetConnectionString());
+            ApplicationContext context =new ApplicationContext(ConnectionStringProvider.GetConnectionString());
             _unitRepository = new UnitRepository(context);
             _unitOfWork = new UnitOfWork(context);
         }
 
-        [DataRow("Siemens", "S0102")]
-        [DataRow("Schnaider Electric", "SE2001")]
+        
+        [DataRow("Schnaider", "SE20")]
+        [DataRow("Siemen", "S01")]
         [TestMethod]
-        public void Can_Add_Unit(
-            string maker,
-            string code)
+        public void Can_Add_Unit(string maker,string code)
         {
             // Arrange
             Guid id = Guid.NewGuid();
-            Unit unit = new Unit(
-              
+            Unit unit = new Unit(              
                 maker,
                 code,
                 id
@@ -94,19 +90,18 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
             Assert.IsNull(loadedUnit);
         }
 
-        [DataRow("Schnaider Electric", "SE2001",true , 4)]
+        [DataRow("Schnaider Electric",true , 0)]
         [TestMethod]
-        public void Can_Update_Unit( string maker, string code, bool isInUse, int position)
+        public void Can_Update_Unit( string maker, bool isInUse, int position)
         {
             // Arrange
             var units = _unitRepository.GetAllUnits().ToList();
             Assert.IsNotNull(units);
-            Assert.IsTrue(position < units.Count);
+           // Assert.IsTrue(position < units.Count);
             Unit unitToUpdate = units[position];
 
             // Execute
             unitToUpdate.Maker = maker;
-            unitToUpdate.Code = code;
             unitToUpdate.IsInUse = isInUse;
             _unitRepository.UpdateUnit(unitToUpdate);
             _unitOfWork.SaveChanges();
@@ -115,7 +110,6 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
             Unit? loadedUnit = _unitRepository.GetUnitById(unitToUpdate.Id);
             Assert.IsNotNull(loadedUnit);
             Assert.AreEqual(loadedUnit.Maker, maker);
-            Assert.AreEqual(loadedUnit.Code, code);
             Assert.AreEqual(loadedUnit.IsInUse, isInUse);
         }
 

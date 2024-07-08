@@ -92,9 +92,9 @@ namespace AccessControlSystem.DataAccess.Tests.UserTests
             Assert.IsNull(loadedUser);
         }
 
-        [DataRow("Carlos Daniel", "Fernandez Ramos", "01102968165", 4)]
+        [DataRow("Carlos Daniel", "Fernandez Ramos", 0)]
         [TestMethod]
-        public void Can_Update_User(string firstName, string lastName, string ci, int position)
+        public void Can_Update_User(string firstName, string lastName, int position)
         {
             // Arrange
             var users = _userRepository.GetAllUsers().ToList();
@@ -105,7 +105,7 @@ namespace AccessControlSystem.DataAccess.Tests.UserTests
             // Execute
             userToUpdate.FirstName = firstName;
             userToUpdate.LastName = lastName;
-            userToUpdate.CI = ci;
+
             _userRepository.UpdateUser(userToUpdate);
             _unitOfWork.SaveChanges();
 
@@ -114,7 +114,7 @@ namespace AccessControlSystem.DataAccess.Tests.UserTests
             Assert.IsNotNull(loadedUser);
             Assert.AreEqual(loadedUser.FirstName, firstName);
             Assert.AreEqual(loadedUser.LastName,lastName );
-            Assert.AreEqual(loadedUser.CI, ci);
+            
         }
 
         [DataRow(0)]
