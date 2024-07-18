@@ -33,6 +33,7 @@ namespace AccessControlSystem.DataAccess.Tests.UserSessionTests
         }
 
         [DataRow(0)]
+        [DataRow(1)]
         [TestMethod]
         public void Can_Add_UserSession(int position)
 

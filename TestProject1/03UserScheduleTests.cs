@@ -28,9 +28,10 @@ namespace AccessControlSystem.DataAccess.Tests.UserSchedulesTests
             _unitOfWork = new UnitOfWork(context);
         }
 
-
+        [DataRow(0)]
+        [DataRow(1)]
         [TestMethod]
-        public void Can_Add_UserSchedule()
+        public void Can_Add_UserSchedule(int position)
         {
             // Arrange
 
@@ -38,7 +39,7 @@ namespace AccessControlSystem.DataAccess.Tests.UserSchedulesTests
             var users = _userRepository.GetAllUsers().ToList();
 
             UserSchedule userSchedule = new UserSchedule
-            (users[0],
+            (users[position],
             id
             );
 

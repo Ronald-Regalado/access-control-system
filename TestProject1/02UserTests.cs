@@ -37,6 +37,8 @@ namespace AccessControlSystem.DataAccess.Tests.UserTests
 
         [DataRow("Ronald", "Regalado Batista", "01022065449")]
         [DataRow("Carlos", "Fernández Ramos","01102968165")]
+        [DataRow("Deimys ", "Rodríguez Gómez","02010868474")]
+        [DataRow("Elianys", "Regalado Batista","08012845368")]
         [TestMethod]
         public void Can_Add_User(
             string firstName,

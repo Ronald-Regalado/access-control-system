@@ -33,8 +33,11 @@ namespace AccessControlSystem.DataAccess.Tests.UnitTests
         }
 
         
-        [DataRow("Schnaider", "SE20")]
+        [DataRow("Schnaider Electric", "SE20")]
         [DataRow("Siemen", "S01")]
+        [DataRow("ABB", "AB01")]
+        [DataRow("Honeywell", "Hw02")]
+        [DataRow("Endress Hauser", "EHs01")]
         [TestMethod]
         public void Can_Add_Unit(string maker,string code)
         {
