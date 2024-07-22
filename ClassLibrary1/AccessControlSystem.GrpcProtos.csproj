@@ -12,9 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AccessControlSystem.Contracts\AccessControlSystem.Contracts.csproj" />
-    <ProjectReference Include="..\AccessControlSystem.DataAccess\AccessControlSystem.DataAccess.csproj" />
-    <ProjectReference Include="..\AccessControlSystem.Domain\AccessControlSystem.Domain.csproj" />
+    <ProjectReference Include="..\AccessControlSystem.Services\AccessControlSystem.Services.csproj" />
   </ItemGroup>
 
 </Project>

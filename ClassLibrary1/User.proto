@@ -1,0 +1,48 @@
+﻿
+
+syntax="proto3";
+
+option csharp_namespace = "CarDealer.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+
+
+//Definición de los servicios para usuario
+service User {
+  
+  rpc CreateUser (CreateUserRequest) returns (UserDTO);
+  rpc GetUser (GetRequest) returns (NullableUserDTO);
+  rpc GetAllUsers(google.protobuf.Empty) returns(Users);
+  rpc UpdateUser(UserDTO) returns (google.protobuf.Empty);
+  rpc DeleteUser(UserDTO) returns (google.protobuf.Empty);
+}
+
+//Messages
+message UserDTO{
+	   string firstName=1;
+       string lastName =2;
+       string ci=3;
+       Location location=4;
+       string schoolLevel =5;
+       Contact contact =6;
+}
+
+message Users{
+    repeated UserDTO items=1;
+}
+message NullableUserDTO{
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		UserDTO user = 2;
+	}
+}
+message createUserRequest{
+     string firstName=1;
+       string lastName =2;
+       string ci=3;
+}
