@@ -1,0 +1,45 @@
+﻿
+syntax="proto3";
+
+option csharp_namespace = "CarDealer.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+
+
+//Definición de los servicios para usuario
+service Unit { 
+
+ rpc CreateUnit (CreateUnitRequest) returns (UnitDTO);
+  rpc GetUnit (GetRequest) returns (NullableUnitDTO);
+  rpc GetAllUnits(google.protobuf.Empty) returns(Units);
+  rpc UpdateUnit(UnitDTO) returns (google.protobuf.Empty);
+  rpc DeleteUnit(UnitDTO) returns (google.protobuf.Empty);
+ 
+}
+
+//Messages
+message UnitDTO{
+	string maker=1;
+	string code=2;
+	string product=3;
+	bool isInUse=4;
+}
+
+message Units{
+    repeated UnitDTO items=1;
+}
+message NullableUnitDTO{
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		UnitDTO unit = 2;
+	}
+}
+message createUnitRequest{
+     string maker=1;
+     string code =2;
+}

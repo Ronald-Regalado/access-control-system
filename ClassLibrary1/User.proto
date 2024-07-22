@@ -13,13 +13,14 @@ import "common.proto";
 
 
 //Definición de los servicios para usuario
-service User {
-  
+service User { 
+
   rpc CreateUser (CreateUserRequest) returns (UserDTO);
   rpc GetUser (GetRequest) returns (NullableUserDTO);
   rpc GetAllUsers(google.protobuf.Empty) returns(Users);
   rpc UpdateUser(UserDTO) returns (google.protobuf.Empty);
   rpc DeleteUser(UserDTO) returns (google.protobuf.Empty);
+ 
 }
 
 //Messages
@@ -43,6 +44,16 @@ message NullableUserDTO{
 }
 message createUserRequest{
      string firstName=1;
-       string lastName =2;
-       string ci=3;
+     string lastName =2;
+     string ci=3;
+}
+
+message Location{
+    string state=1;
+    string city=2;
+    string address=3;
+}
+message Contact{
+    string mail=1;
+    string telephone=2;
 }
