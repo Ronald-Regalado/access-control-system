@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace AccessControlSystem.Domain.Entities.Users
 {
@@ -52,5 +53,24 @@ namespace AccessControlSystem.Domain.Entities.Users
         }
 
         protected User() { }
+        /// <summary>
+        /// Función para crear la entidad usuario pudiendo validar los parámetros de esta.
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="ci"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static User createUser(string firstName, string lastName, string ci, Guid id)
+        {
+           if(Regex.IsMatch(ci, @"^\d{11}$") && Regex.IsMatch(firstName, @"^[a-zA-Z\s]") && Regex.IsMatch(lastName, @"^[a-zA-Z\s]"))
+            {
+                return new User(firstName, lastName, ci, id);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

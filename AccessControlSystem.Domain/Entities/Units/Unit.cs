@@ -45,5 +45,17 @@ namespace AccessControlSystem.Domain.Entities.Units
         protected Unit()
         {
         }
+
+        public static Unit createUit(string maker, string code, Guid id)
+        {
+            if(maker != null && code != null)
+            {
+                return new Unit(maker, code, id);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
