@@ -1,7 +1,7 @@
-using AccessControlSystem.GrpcService;
+using AccessControlSystem.GrpcServices;
 using Grpc.Core;
 
-namespace AccessControlSystem.GrpcService.Services
+namespace AccessControlSystem.GrpcServices.Services
 {
     public class GreeterService : Greeter.GreeterBase
     {

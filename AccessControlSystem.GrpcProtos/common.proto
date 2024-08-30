@@ -1,0 +1,12 @@
+﻿syntax="proto3";
+
+option csharp_namespace="AccessControlSystem.GrpcProtos";
+
+package GrpcProtos;
+
+message GetRequest{
+	string id=1;
+}
+message DeleteRequeste{
+	string id=1;
+}

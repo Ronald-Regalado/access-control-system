@@ -1,6 +1,6 @@
-using AccessControlSystem.GrpcService.Services;
+using AccessControlSystem.GrpcServices.Services;
 
-namespace AccessControlSystem.GrpcService
+namespace AccessControlSystem.GrpcServices
 {
     public class Program
     {

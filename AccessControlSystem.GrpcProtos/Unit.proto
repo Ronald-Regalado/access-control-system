@@ -1,0 +1,42 @@
+﻿syntax="proto3";
+
+option csharp_namespace="AccessControlSystem.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+
+service Unit{
+	rpc CreateUnit(CreateUnitRequest) returns (UnitDTO);
+	rpc GetUnit(GetRequest) returns (NullableUnitDTO);
+	rpc GetAllUnit(google.protobuf.Empty) returns (Units);
+	rpc UpdateUnit(UnitDTO) returns (google.protobuf.Empty);
+	rpc DeleteUnit(DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message UnitDTO{
+	string id=1;
+	string maker=2;
+	string code=3;
+	string product=4;
+	bool isInUse=5;
+}
+
+message Units{
+	repeated UnitDTO items=1;
+}
+
+message NullableUnitDTO{
+	oneof kind{
+		google.protobuf.NullValue null=1;
+		UnitDTO unit=2;
+	}
+}
+message CreateUnitRequeste{
+	string maker=1;
+	string code=2;
+	
+}
