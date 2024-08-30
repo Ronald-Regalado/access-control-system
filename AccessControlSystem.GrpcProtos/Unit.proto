@@ -35,7 +35,7 @@ message NullableUnitDTO{
 		UnitDTO unit=2;
 	}
 }
-message CreateUnitRequeste{
+message CreateUnitRequest{
 	string maker=1;
 	string code=2;
 	

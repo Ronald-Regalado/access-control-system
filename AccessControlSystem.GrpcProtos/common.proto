@@ -7,6 +7,6 @@ package GrpcProtos;
 message GetRequest{
 	string id=1;
 }
-message DeleteRequeste{
+message DeleteRequest{
 	string id=1;
 }
