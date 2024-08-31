@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlSystem.Contrac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlSystem.DataAccess.Tests", "TestProject1\AccessControlSystem.DataAccess.Tests.csproj", "{F6078D07-B125-406D-8659-5E60FD901A80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlSystem.GrpcProtos", "AccessControlSystem.GrpcProtos\AccessControlSystem.GrpcProtos.csproj", "{B38D92CB-A32B-449E-B95E-D39E82B21C2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlSystem.GrpcProtos", "AccessControlSystem.GrpcProtos\AccessControlSystem.GrpcProtos.csproj", "{B38D92CB-A32B-449E-B95E-D39E82B21C2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlSystem.GrpcServices", "AccessControlSystem.GrpcServices\AccessControlSystem.GrpcServices.csproj", "{162F471F-9381-44B7-85C5-0DCA0E720DD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlSystem.GrpcServices", "AccessControlSystem.GrpcServices\AccessControlSystem.GrpcServices.csproj", "{162F471F-9381-44B7-85C5-0DCA0E720DD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccessControlSystem.GrpcServices.Protos";
+
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "Protos/common.proto";
+import "Protos/User.proto";
+
+service UserSchedule{
+	rpc CreateUserSchedule(CreateUserScheduleRequest) returns(UserScheduleDTO);
+	rpc GetUserSchedule(GetRequest) returns(NullableUserScheduleDTO);
+	rpc GetAllUserSchedules(google.protobuf.Empty) returns(UserSchedules);
+	rpc UpdateUserSchedule(UserScheduleDTO) returns(google.protobuf.Empty);
+	rpc DeleteUserSchedule(DeleteRequest) returns(google.protobuf.Empty);
+}
+
+message UserScheduleDTO{
+	string id=1;
+	UserDTO user=2;
+	string UserScheduleId=3;
+	map<int64,string> schedule=4;
+}
+message UserSchedules{
+	repeated UserScheduleDTO items=1;
+}
+message NullableUserScheduleDTO{
+	oneof kind{
+		google.protobuf.NullValue null=1;
+		UserScheduleDTO userSchedule=2;
+	}
+}
+message CreateUserScheduleRequest{
+	UserDTO user=1;
+}

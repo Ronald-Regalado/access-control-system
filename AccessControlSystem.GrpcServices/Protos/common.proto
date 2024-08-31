@@ -1,8 +1,9 @@
-﻿syntax="proto3";
+syntax = "proto3";
 
-option csharp_namespace="AccessControlSystem.GrpcProtos";
+option csharp_namespace = "AccessControlSystem.GrpcServices.Protos";
 
 package GrpcProtos;
+
 
 message GetRequest{
 	string id=1;

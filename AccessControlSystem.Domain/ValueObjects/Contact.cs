@@ -20,6 +20,7 @@ namespace AccessControlSystem.Domain.ValueObjects
         public string Telephone { get; set; }
         #endregion
 
+        #region Constructors
         /// <summary>
         /// Constuctor inicializa un objeto Contact <see cref="Contact"/>.
         /// </summary>
@@ -31,7 +32,7 @@ namespace AccessControlSystem.Domain.ValueObjects
             Telephone = telephone;
         }
         protected Contact() { }
-
+        #endregion
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Mail;

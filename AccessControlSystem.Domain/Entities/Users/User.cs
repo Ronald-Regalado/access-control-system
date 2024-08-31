@@ -38,6 +38,7 @@ namespace AccessControlSystem.Domain.Entities.Users
         public Contact? Contact { get; set; }
         #endregion
 
+        #region Constructors
         /// <summary>
         /// Constuctor inicializa un objeto User <see cref="User"/>.
         /// </summary>
@@ -72,5 +73,6 @@ namespace AccessControlSystem.Domain.Entities.Users
                 return null;
             }
         }
+        #endregion
     }
 }

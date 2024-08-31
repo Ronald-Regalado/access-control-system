@@ -23,7 +23,7 @@ namespace AccessControlSystem.Domain.ValueObjects
         /// </summary>
         public string Address { get; set; }
         #endregion
-
+        #region Constructors
         /// <summary>
         /// Constuctor inicializa un objeto Location <see cref="Location"/>.
         /// </summary>
@@ -37,6 +37,7 @@ namespace AccessControlSystem.Domain.ValueObjects
             Address = address;
         }
         protected Location() { }
+        #endregion
 
         protected override IEnumerable<object> GetEqualityComponents()
         {

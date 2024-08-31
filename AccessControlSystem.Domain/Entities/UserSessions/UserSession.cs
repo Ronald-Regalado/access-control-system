@@ -38,6 +38,7 @@ namespace AccessControlSystem.Domain.Entities.UserSessions
         public DateTime? EndTime { get; set; }
         #endregion
 
+        #region Constructors
         /// <summary>
         /// Constructor del objeto sesión de usuario
         /// </summary>
@@ -50,5 +51,6 @@ namespace AccessControlSystem.Domain.Entities.UserSessions
             StartTime = DateTime.Now;
         }
         protected UserSession() { }
+        #endregion
     }
 }

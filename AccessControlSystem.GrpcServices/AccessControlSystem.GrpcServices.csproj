@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\*.proto" GrpcServices="Both" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\common.proto" />
+    <None Remove="Protos\Unit.proto" />
+    <None Remove="Protos\User.proto" />
+    <None Remove="Protos\UserSchedule.proto" />
+    <None Remove="Protos\UserSession.proto" />
   </ItemGroup>
 
   <ItemGroup>

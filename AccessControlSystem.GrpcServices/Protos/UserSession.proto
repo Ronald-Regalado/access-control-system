@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccessControlSystem.GrpcServices.Protos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "Protos/common.proto";
+import "Protos/User.proto";
+import "Protos/Unit.proto";
+
+service UserSession{
+    rpc CreateUserSession(CreateUserSessionRequest) returns(UserSessionDTO);
+    rpc GetUserSession(GetRequest) returns(NullableUserSessionDTO);
+    rpc GetAllUserSessions(google.protobuf.Empty) returns(UserSessions);
+    rpc UpdateUserSession(UserSessionDTO) returns(google.protobuf.Empty);
+    rpc DeleteUserSession(DeleteRequest) returns(google.protobuf.Empty);
+}
+
+message UserSessionDTO{
+    string id=1;
+    UserDTO user=2;
+    string userId=3;
+    UnitDTO busyUnit=4;
+    string unitId=5;
+    google.protobuf.Timestamp startTime=6;
+    google.protobuf.Timestamp endTime=7;
+}
+message UserSessions{
+    repeated UserSessionDTO items=1;
+}
+message NullableUserSessionDTO{
+    oneof kind{
+		google.protobuf.NullValue null=1;
+		UserSessionDTO userSession=2;
+	}
+}
+message CreateUserSessionRequest{
+    UserDTO user=1;
+    UnitDTO busyUnit=2;
+    //TODO: duda si se incluye el startTime o se crea en la entidad;
+}

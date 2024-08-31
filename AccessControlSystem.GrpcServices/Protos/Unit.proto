@@ -1,20 +1,20 @@
-﻿syntax="proto3";
+syntax = "proto3";
 
-option csharp_namespace="AccessControlSystem.GrpcProtos";
+option csharp_namespace = "AccessControlSystem.GrpcServices.Protos";
 
 package GrpcProtos;
 
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
-import "common.proto";
+import "Protos/common.proto";
 
 service Unit{
-	rpc CreateUnit(CreateUnitRequest) returns (UnitDTO);
-	rpc GetUnit(GetRequest) returns (NullableUnitDTO);
-	rpc GetAllUnit(google.protobuf.Empty) returns (Units);
-	rpc UpdateUnit(UnitDTO) returns (google.protobuf.Empty);
-	rpc DeleteUnit(DeleteRequest) returns (google.protobuf.Empty);
+	rpc CreateUnit(CreateUnitRequest) returns(UnitDTO);
+	rpc GetUnit(GetRequest) returns(NullableUnitDTO);
+	rpc GetAllUnits(google.protobuf.Empty) returns(Units);
+	rpc UpdateUnit(UnitDTO) returns(google.protobuf.Empty);
+	rpc DeleteUnit(DeleteRequest) returns(google.protobuf.Empty);
 }
 
 message UnitDTO{
@@ -24,11 +24,9 @@ message UnitDTO{
 	string product=4;
 	bool isInUse=5;
 }
-
 message Units{
 	repeated UnitDTO items=1;
 }
-
 message NullableUnitDTO{
 	oneof kind{
 		google.protobuf.NullValue null=1;
@@ -38,5 +36,4 @@ message NullableUnitDTO{
 message CreateUnitRequest{
 	string maker=1;
 	string code=2;
-	
 }

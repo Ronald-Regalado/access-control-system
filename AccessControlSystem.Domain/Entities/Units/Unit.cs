@@ -30,6 +30,7 @@ namespace AccessControlSystem.Domain.Entities.Units
 
         #endregion
 
+        #region Constructors
         /// <summary>
         /// Inicializa un objeto <see cref="Unit"/>.
         /// </summary>
@@ -57,5 +58,7 @@ namespace AccessControlSystem.Domain.Entities.Units
                 return null;
             }
         }
+        #endregion
     }
+
 }
