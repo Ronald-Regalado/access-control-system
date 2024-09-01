@@ -1,4 +1,6 @@
-﻿using AccessControlSystem.GrpcServices;
+﻿using AccessControlSystem.Contracts;
+using AccessControlSystem.Contracts.Units;
+using AccessControlSystem.GrpcServices;
 using AccessControlSystem.GrpcServices.Protos;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
@@ -7,6 +9,14 @@ namespace AccessControlSystem.GrpcServices.Services
 {
     public class UnitService : Unit.UnitBase
     {
+        private readonly IUnitRepository _unitRepository;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public UnitService(IUnitRepository unitRepository, IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+            _unitRepository = unitRepository;
+        }
         public override Task<UnitDTO> CreateUnit(CreateUnitRequest request, ServerCallContext context)
         {
             return base.CreateUnit(request, context);

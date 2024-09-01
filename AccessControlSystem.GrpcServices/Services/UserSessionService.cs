@@ -1,4 +1,6 @@
-﻿using AccessControlSystem.GrpcServices;
+﻿using AccessControlSystem.Contracts.UserSessions;
+using AccessControlSystem.Contracts;
+using AccessControlSystem.GrpcServices;
 using AccessControlSystem.GrpcServices.Protos;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
@@ -7,6 +9,14 @@ namespace AccessControlSystem.GrpcServices.Services
 {
     public class UserSessionService:UserSession.UserSessionBase
     {
+        private readonly IUserSessionRepository _userSessionRepository;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public UserSessionService(IUserSessionRepository userSessionRepository, IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+            _userSessionRepository = userSessionRepository;
+        }
         public override Task<UserSessionDTO> CreateUserSession(CreateUserSessionRequest request, ServerCallContext context)
         {
             return base.CreateUserSession(request, context);

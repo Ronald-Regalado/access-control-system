@@ -22,4 +22,9 @@
     <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AccessControlSystem.Contracts\AccessControlSystem.Contracts.csproj" />
+    <ProjectReference Include="..\AccessControlSystem.DataAccess\AccessControlSystem.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

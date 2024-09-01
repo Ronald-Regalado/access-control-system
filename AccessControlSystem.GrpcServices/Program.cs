@@ -1,4 +1,17 @@
 using AccessControlSystem.GrpcServices.Services;
+using AccessControlSystem.DataAccess.Repositories;
+using AccessControlSystem.Contracts.Users;
+using AccessControlSystem.DataAccess;
+using AccessControlSystem.DataAccess.Repositories.Users;
+using AccessControlSystem.Contracts;
+using AccessControlSystem.DataAccess.Contexts;
+using AccessControlSystem.DataAccess.Repositories.Units;
+using AccessControlSystem.Contracts.Units;
+using AccessControlSystem.DataAccess.Repositories.UserSchedules;
+using AccessControlSystem.Contracts.UserSchedules;
+using AccessControlSystem.DataAccess.Repositories.UserSessions;
+using AccessControlSystem.Contracts.UserSessions;
+
 
 namespace AccessControlSystem.GrpcServices
 {
@@ -13,6 +26,14 @@ namespace AccessControlSystem.GrpcServices
 
             // Add services to the container.
             builder.Services.AddGrpc();
+            builder.Services.AddSingleton("Data Source = CarDealerDB.sqlite");
+            builder.Services.AddScoped<ApplicationContext>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUnitRepository, UnitRepository>();
+            builder.Services.AddScoped<IUserScheduleRepository, UserScheduleRepository>();
+            builder.Services.AddScoped<IUserSessionRepository, UserSessionRepository>();
+
 
             var app = builder.Build();
 
