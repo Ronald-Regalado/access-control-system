@@ -20,7 +20,8 @@ namespace AccessControlSystem.AppConsole
     internal class Program
     {
         static async Task Main(string[] args)
-        {//Borrando Base de Datos
+      {
+            //Borrando Base de Datos
             if (File.Exists("Data.sqlite"))
                 File.Delete("Data.sqlite");
 

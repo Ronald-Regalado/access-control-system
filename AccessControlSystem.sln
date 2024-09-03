@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlSystem.DataAcc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControlSystem.GrpcServices", "AccessControlSystem.GrpcServices\AccessControlSystem.GrpcServices.csproj", "{162F471F-9381-44B7-85C5-0DCA0E720DD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlSystem.Application", "AccessControlSystem.Application\AccessControlSystem.Application.csproj", "{BC3CD01D-9CCD-4888-9058-3B50F0A593DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{162F471F-9381-44B7-85C5-0DCA0E720DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{162F471F-9381-44B7-85C5-0DCA0E720DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{162F471F-9381-44B7-85C5-0DCA0E720DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC3CD01D-9CCD-4888-9058-3B50F0A593DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC3CD01D-9CCD-4888-9058-3B50F0A593DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC3CD01D-9CCD-4888-9058-3B50F0A593DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC3CD01D-9CCD-4888-9058-3B50F0A593DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
