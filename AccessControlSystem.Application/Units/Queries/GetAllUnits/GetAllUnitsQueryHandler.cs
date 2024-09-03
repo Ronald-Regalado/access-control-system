@@ -10,21 +10,23 @@ using System.Threading.Tasks;
 
 namespace AccessControlSystem.Application.Units.Queries.GetAllUnits
 {
-    public class GetAllUnitsQueryHandler: IQueryHandler<GetAllUnitsQuery,IEnumerable<Unit>>
+    public class GetAllUnitsQueryHandler
+        : IQueryHandler<GetAllUnitsQuery,IEnumerable<Unit>>
     {
         private readonly IUnitRepository _unitRepository;
-        private readonly IUnitOfWork _unitOfWork;
+       
 
-        public GetAllUnitsQueryHandler(IUnitRepository unitRepository, IUnitOfWork unitOfWork)
+        public GetAllUnitsQueryHandler(IUnitRepository unitRepository)
         {
             _unitRepository = unitRepository;
-            _unitOfWork = unitOfWork;
+          
         }
 
-        public Task<IEnumerable<Unit>> Handle(GetAllUnitsQuery request,CancellationToken cancellationToken)
+        public Task<IEnumerable<Unit>> Handle(GetAllUnitsQuery request,CancellationToken cancellationToken) 
         {
-            IEnumerable<Unit> units= _unitRepository.GetAllUnits();
+            IEnumerable<Unit> units = _unitRepository.GetAllUnits();
             return Task.FromResult(units);
+            
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using AccessControlSystem.Application.Abstract;
-using MediatR;
+using AccessControlSystem.Domain.Entities.Units;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace AccessControlSystem.Application.Units.Queries.GetAllUnits
 {
-    public record GetAllUnitsQuery(): IQuery<IEnumerable<Unit>>;
+    public record GetAllUnitsQuery():IQuery<IEnumerable<Unit>>;
 }
