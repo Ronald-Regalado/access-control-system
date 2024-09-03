@@ -24,7 +24,7 @@ namespace AccessControlSystem.Application.UserSchedules.Commands.CreateUserSched
         public Task<UserSchedule> Handle( CreateUserScheduleCommand request,CancellationToken cancellationToken)
         {
             var result = new UserSchedule(
-                request.user,
+                request.User,
                 Guid.NewGuid());
             _userScheduleRepository.AddUserSchedule(result);
              _unitOfWork.SaveChanges();
