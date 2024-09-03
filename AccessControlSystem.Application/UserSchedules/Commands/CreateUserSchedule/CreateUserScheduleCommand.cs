@@ -10,5 +10,5 @@ using System.Windows.Input;
 
 namespace AccessControlSystem.Application.UserSchedules.Commands.CreateUserSchedule
 {
-    public record CreateUserScheduleCommand(User user) : ICommand<UserSchedule>;
+    public record CreateUserScheduleCommand(User User) : ICommand<UserSchedule>;
 }

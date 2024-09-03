@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccessControlSystem.Application.UserSchedules.Queries.GetAllUserchedules
+namespace AccessControlSystem.Application.UserSchedules.Queries.GetAllUserSchedules
 {
     public class GetAllUserSchedulesQueryHandler: IQueryHandler<GetAllUserSchedulesQuery,IEnumerable<UserSchedule>>
     {

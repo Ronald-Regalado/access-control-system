@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccessControlSystem.Application.UserSchedules.Queries.GetAllUserchedules
+namespace AccessControlSystem.Application.UserSchedules.Queries.GetAllUserSchedules
 {
    public record GetAllUserSchedulesQuery():IQuery<IEnumerable<UserSchedule>>;
     

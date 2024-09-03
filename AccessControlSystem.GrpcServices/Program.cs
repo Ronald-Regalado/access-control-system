@@ -11,6 +11,7 @@ using AccessControlSystem.DataAccess.Repositories.UserSchedules;
 using AccessControlSystem.Contracts.UserSchedules;
 using AccessControlSystem.DataAccess.Repositories.UserSessions;
 using AccessControlSystem.Contracts.UserSessions;
+using System.Reflection.Metadata;
 
 
 namespace AccessControlSystem.GrpcServices
@@ -26,6 +27,14 @@ namespace AccessControlSystem.GrpcServices
 
             // Add services to the container.
             builder.Services.AddGrpc();
+            builder.Services.AddAutoMapper(typeof(Program).Assembly);
+            builder.Services.AddMediatR(new MediatRServiceConfiguration()
+            {
+                AutoRegisterRequestProcessors = true,
+            }
+            .RegisterServicesFromAssemblies(typeof(AssemblyReference).Assembly));
+
+
             builder.Services.AddSingleton("Data Source = CarDealerDB.sqlite");
             builder.Services.AddScoped<ApplicationContext>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

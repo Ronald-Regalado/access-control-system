@@ -19,10 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
+    <PackageReference Include="MediatR" Version="12.3.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AccessControlSystem.Application\AccessControlSystem.Application.csproj" />
     <ProjectReference Include="..\AccessControlSystem.Contracts\AccessControlSystem.Contracts.csproj" />
     <ProjectReference Include="..\AccessControlSystem.DataAccess\AccessControlSystem.DataAccess.csproj" />
   </ItemGroup>

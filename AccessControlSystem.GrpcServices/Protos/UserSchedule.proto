@@ -23,7 +23,7 @@ service UserSchedule{
 message UserScheduleDTO{
 	string id=1;
 	UserDTO user=2;
-	string UserScheduleId=3;
+	string UserId=3;
 	map<int64,string> schedule=4;
 }
 message UserSchedules{
