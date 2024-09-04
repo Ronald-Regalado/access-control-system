@@ -10,7 +10,7 @@ using AccessControlSystem.Application.Users.Commands.CreateUser;
 using AccessControlSystem.Application.Users.Queries.GetUserById;
 using AccessControlSystem.Application.Users.Queries.GetAllUsers;
 using AccessControlSystem.Application.Users.Commands.UpdateUser;
-using AccessControlSystem.Application.Users.Commands.UpdateUser;
+
 
 namespace AccessControlSystem.GrpcServices.Services
 {
@@ -21,8 +21,8 @@ namespace AccessControlSystem.GrpcServices.Services
 
         public UserService(IMediator mediator, IMapper mapper)
         {
-            _mapper = mapper;
             _mediator = mediator;
+            _mapper = mapper;
 
         }
         public override Task<UserDTO> CreateUser(CreateUserRequest request, ServerCallContext context)

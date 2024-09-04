@@ -1,8 +1,6 @@
 ﻿using AccessControlSystem.Application.Units.Commands.CreateUnit;
 using AccessControlSystem.Application.Units.Queries.GetUnitById;
-using AccessControlSystem.Application.Units.Commands.CreateUnit;
 using AccessControlSystem.Application.Units.Queries.GetAllUnits;
-using AccessControlSystem.Application.Units.Queries.GetUnitById;
 using AccessControlSystem.Contracts;
 using AccessControlSystem.Contracts.Units;
 using AccessControlSystem.GrpcServices;
@@ -11,7 +9,6 @@ using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using MediatR;
-using AccessControlSystem.Application.Units.Commands.UpdateUnit;
 using AccessControlSystem.Application.Units.Commands.UpdateUnit;
 
 namespace AccessControlSystem.GrpcServices.Services

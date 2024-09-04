@@ -1,10 +1,5 @@
 ﻿using AccessControlSystem.Domain.Common;
 using AccessControlSystem.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace AccessControlSystem.Domain.Entities.Users
@@ -64,7 +59,7 @@ namespace AccessControlSystem.Domain.Entities.Users
         /// <returns></returns>
         public static User createUser(string firstName, string lastName, string ci, Guid id)
         {
-           if(Regex.IsMatch(ci, @"^\d{11}$") && Regex.IsMatch(firstName, @"^[a-zA-Z\s]") && Regex.IsMatch(lastName, @"^[a-zA-Z\s]"))
+            if (Regex.IsMatch(ci, @"^\d{11}$") && Regex.IsMatch(firstName, @"^[a-zA-Z\s]") && Regex.IsMatch(lastName, @"^[a-zA-Z\s]"))
             {
                 return new User(firstName, lastName, ci, id);
             }
