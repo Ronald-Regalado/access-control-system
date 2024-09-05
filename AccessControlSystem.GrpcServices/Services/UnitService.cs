@@ -10,6 +10,7 @@ using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using MediatR;
 using AccessControlSystem.Application.Units.Commands.UpdateUnit;
+using AccessControlSystem.Application.Units.Commands.DeleteUnit;
 
 namespace AccessControlSystem.GrpcServices.Services
 {
@@ -64,7 +65,7 @@ namespace AccessControlSystem.GrpcServices.Services
 
         public override Task<Empty> DeleteUnit(DeleteRequest request, ServerCallContext context)
         {
-            var command = new UpdateUnitCommand(_mapper.Map<Domain.Entities.Units.Unit>(request));
+            var command = new DeleteUnitCommand(new Guid(request.Id));
 
             _mediator.Send(command);
 
