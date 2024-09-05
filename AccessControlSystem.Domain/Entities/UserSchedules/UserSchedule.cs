@@ -25,8 +25,7 @@ namespace AccessControlSystem.Domain.Entities.UserSchedules
         public Guid UserId { get; set; }
         /// <summary>
         /// Horario del usuario y descripcion
-        /// </summary>
-       
+        /// </summary>       
         public Dictionary<DateTime, string>? Schedule { get; set; }
          // public string? ScheduleJson { get; set; }
         #endregion

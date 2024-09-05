@@ -47,7 +47,7 @@ namespace AccessControlSystem.Domain.Entities.Units
         {
         }
 
-        public static Unit createUit(string maker, string code, Guid id)
+        public static Unit? CreateUnit(string maker, string code, Guid id)
         {
             if(maker != null && code != null)
             {

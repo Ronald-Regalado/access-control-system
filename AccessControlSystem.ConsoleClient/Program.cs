@@ -12,7 +12,7 @@ namespace AccessControlSystem.ConsoleClient
     {
         static void Main(string[] args)
         {
-
+           
 
             Console.WriteLine("Presione una tecla para conectar");
             Console.ReadKey();
@@ -161,7 +161,7 @@ namespace AccessControlSystem.ConsoleClient
             {
                 Console.WriteLine($"Modificación exitosa.");
             }
-
+            
             Console.WriteLine("Presione una tecla para eliminar el usuario");
             Console.ReadKey();
 
@@ -172,6 +172,7 @@ namespace AccessControlSystem.ConsoleClient
             {
                 Console.WriteLine($"Eliminación exitosa.");
             }
+            
             /*
             //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             Console.WriteLine("==========================================================================");
@@ -181,8 +182,8 @@ namespace AccessControlSystem.ConsoleClient
             Console.WriteLine("Presione una tecla para crear un sesion");
             Console.ReadKey();
 
-            createResponse.Id=Guid.NewGuid().ToString();
-            createResponse1.Id=Guid.NewGuid().ToString();
+            createResponse.Id= Guid.NewGuid().ToString();
+            createResponse1.Id= Guid.NewGuid().ToString();
             var createResponse2 = client2.CreateUserSession(new CreateUserSessionRequest()
             {
                 User =createResponse1,
@@ -251,13 +252,13 @@ namespace AccessControlSystem.ConsoleClient
                 deletedGetResponse2.KindCase != NullableUserSessionDTO.KindOneofCase.UserSession)
             {
                 Console.WriteLine($"Eliminación exitosa.");
-            }
+            }*/
             
             //===========================================================================
-            
+            /*
             Console.WriteLine("Presione una tecla para eliminar el usuario");
             Console.ReadKey();
-
+            
             client1.DeleteUser(new DeleteRequest() { Id = createResponse1.Id });
             var deletedGetResponse1 = client1.GetUser(new GetRequest() { Id = createResponse1.Id });
             if (deletedGetResponse1 is null ||
@@ -276,8 +277,8 @@ namespace AccessControlSystem.ConsoleClient
                 deletedGetResponse.KindCase != NullableUnitDTO.KindOneofCase.Unit)
             {
                 Console.WriteLine($"Eliminación exitosa.");
-            }
-            */
+            }*/
+            
 
             channel.Dispose();
 

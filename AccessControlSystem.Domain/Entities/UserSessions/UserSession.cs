@@ -49,7 +49,6 @@ namespace AccessControlSystem.Domain.Entities.UserSessions
             User = user;
             BusyUnit = busyUnit;
             StartTime = DateTime.UtcNow;
-            EndTime = DateTime.UtcNow;
            
         }
         protected UserSession() { }

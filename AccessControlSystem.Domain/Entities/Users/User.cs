@@ -45,9 +45,6 @@ namespace AccessControlSystem.Domain.Entities.Users
             FirstName = firstName;
             LastName = lastName;
             CI = ci;
-            Location = new Location("", "", "");
-            Contact = new Contact("", "");
-
         }
 
         protected User() { }
@@ -59,7 +56,7 @@ namespace AccessControlSystem.Domain.Entities.Users
         /// <param name="ci"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static User createUser(string firstName, string lastName, string ci, Guid id)
+        public static User? CreateUser(string firstName, string lastName, string ci, Guid id)
         {
             if (Regex.IsMatch(ci, @"^\d{11}$") && Regex.IsMatch(firstName, @"^[a-zA-Z\s]") && Regex.IsMatch(lastName, @"^[a-zA-Z\s]"))
             {

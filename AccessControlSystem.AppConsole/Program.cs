@@ -43,11 +43,11 @@ namespace AccessControlSystem.AppConsole
 
 
             //Creando entidades para la BD
-            User user1 = User.createUser("Ronald", "Regalado Batista", "01022065449", Guid.NewGuid());
-            User user2 = User.createUser("Carlos Daniel", "Fernández Ramos", "01027854223", Guid.NewGuid());
+            User? user1 = User.CreateUser("Ronald", "Regalado Batista", "01022065449", Guid.NewGuid());
+            User? user2 = User.CreateUser("Carlos Daniel", "Fernández Ramos", "01027854223", Guid.NewGuid());
 
-            Unit unit1 =  Unit.createUit("Siemens", "S0102", Guid.NewGuid());
-            Unit unit2 =  Unit.createUit("Schnaider Electric", "SE2001", Guid.NewGuid());
+            Unit? unit1 =  Unit.CreateUnit("Siemens", "S0102", Guid.NewGuid());
+            Unit? unit2 =  Unit.CreateUnit("Schnaider Electric", "SE2001", Guid.NewGuid());
 
             UserSession sesion1 = new UserSession(user1, unit1, Guid.NewGuid());
             UserSession sesion2 = new UserSession(user2, unit1, Guid.NewGuid());
@@ -81,19 +81,22 @@ namespace AccessControlSystem.AppConsole
                 Console.WriteLine($"Los usuario solicitados son {user1.FirstName}{user1.LastName}  y " +
                     $" {userB.FirstName} {userB.LastName}.");
             }
-        
 
-        
-            
 
-            //Actualización de BD
-            //unit2.Maker = "Siemens";
-            //schedule.Schedule.Add(DateTime.Now,"Se guardo correctamente");
 
-           // unitRepository.UpdateUnit(unit2);
-           // unitOfWork.SaveChanges();
-           // Unit? modifiedUnit= unitRepository.GetUnitById(unit2);
-            Console.WriteLine($"Rectificada marca de la unidad #2 a {unit2.Maker}");
+
+
+           // Actualización de BD
+            unit2.Maker = "Siemens";
+            schedule.Schedule.Add(DateTime.Now, "Se guardo correctamente");
+
+            unitRepository.UpdateUnit(unit2);
+            unitOfWork.SaveChanges();
+            Unit? modifiedUnit = unitRepository.GetUnitById(unit2.Id);
+            if(modifiedUnit is not null && modifiedUnit.Maker==unit2.Maker)
+                Console.WriteLine($"Rectificada marca de la unidad #2 a {unit2.Maker}");
+
+
 
             //Eliminando entidad
             unitRepository.DeleteUnit(unit2);
