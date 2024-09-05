@@ -22,8 +22,8 @@ namespace AccessControlSystem.AppConsole
         static async Task Main(string[] args)
       {
             //Borrando Base de Datos
-            if (File.Exists("Data.sqlite"))
-                File.Delete("Data.sqlite");
+          /*  if (File.Exists("Data.sqlite"))
+                File.Delete("Data.sqlite");*/
 
             // Definiendo string de conexión.
             string connectionString = "Data Source = Data.sqlite";

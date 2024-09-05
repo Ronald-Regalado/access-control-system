@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Google.Protobuf.WellKnownTypes;
 
 namespace AccessControlSystem.GrpcServices.Mappers
 {
@@ -12,8 +13,8 @@ namespace AccessControlSystem.GrpcServices.Mappers
                 .ForMember(t => t.UserId, o => o.MapFrom(s => s.UserId.ToString()))
                 .ForMember(t => t.BusyUnit, o => o.MapFrom(s => s.BusyUnit))
                 .ForMember(t => t.UnitId, o => o.MapFrom(s => s.UnitId.ToString()))
-                .ForMember(t => t.StartTime, o => o.MapFrom(s => s.StartTime))
-                .ForMember(t => t.EndTime, o => o.MapFrom(s => s.EndTime));
+                .ForMember(t => t.StartTime, o => o.MapFrom(s => Timestamp.FromDateTime(s.StartTime)))
+                .ForMember(t => t.EndTime, o => o.MapFrom(s => Timestamp.FromDateTime(s.EndTime.Value)));
 
             CreateMap< GrpcServices.Protos.UserSessionDTO, Domain.Entities.UserSessions.UserSession>()
                  .ForMember(t => t.Id, o => o.MapFrom(s => new Guid(s.Id)))
@@ -21,8 +22,8 @@ namespace AccessControlSystem.GrpcServices.Mappers
                 .ForMember(t => t.UserId, o => o.MapFrom(s => new Guid(s.UserId)))
                 .ForMember(t => t.BusyUnit, o => o.MapFrom(s => s.BusyUnit))
                 .ForMember(t => t.UnitId, o => o.MapFrom(s => new Guid(s.UnitId)))
-                .ForMember(t => t.StartTime, o => o.MapFrom(s => s.StartTime))
-                .ForMember(t => t.EndTime, o => o.MapFrom(s => s.EndTime));
+                .ForMember(t => t.StartTime, o => o.MapFrom(s => s.StartTime.ToDateTime()))
+                .ForMember(t => t.EndTime, o => o.MapFrom(s => s.EndTime.ToDateTime()));
         }
     }
 }

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessControlSystem.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240722195114_Initial")]
+    [Migration("20240905071801_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,8 +41,6 @@ namespace AccessControlSystem.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("Code");
-
                     b.ToTable("Units", (string)null);
                 });
 
@@ -68,8 +66,6 @@ namespace AccessControlSystem.DataAccess.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasAlternateKey("CI");
 
                     b.ToTable("Users", (string)null);
                 });

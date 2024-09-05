@@ -48,14 +48,16 @@ namespace AccessControlSystem.GrpcServices.Services
         public override Task<UserSessions> GetAllUserSessions(Empty request, ServerCallContext context)
         {
             var query = new GetAllUserSessionsQuery();
+
             var result = _mediator.Send(query).Result;
 
-            // Convirtiendo de lista de horarios al mensaje de lista de DTOs de horarios.
-            var UserSessionDTOs = new UserSessions();
-            UserSessionDTOs.Items.AddRange(result.Select(m => _mapper.Map<UserSessionDTO>(m)));
+            // Convirtiendo de lista de motocicletas al mensaje de lista de DTOs de motocicletas.
+            var userSessionsDTOs = new UserSessions();
+            userSessionsDTOs.Items.AddRange(result.Select(m => _mapper.Map<UserSessionDTO>(m)));
 
-            return Task.FromResult(UserSessionDTOs);
+            return Task.FromResult(userSessionsDTOs);
         }
+
         public override Task<Empty> UpdateUserSession(UserSessionDTO request, ServerCallContext context)
         {
             var command = new UpdateUserSessionCommand(_mapper.Map<Domain.Entities.UserSessions.UserSession>(request));

@@ -104,7 +104,7 @@ namespace AccessControlSystem.DataAccess.Tests.UserSessionTests
             UserSession userSessionToUpdate = userSessions[position];
 
             // Execute
-            DateTime endTime = DateTime.Now;
+            DateTime endTime = DateTime.UtcNow;
             userSessionToUpdate.EndTime = endTime;
             _userSessionRepository.UpdateUserSession(userSessionToUpdate);
             _unitOfWork.SaveChanges();

@@ -45,6 +45,8 @@ namespace AccessControlSystem.Domain.Entities.Users
             FirstName = firstName;
             LastName = lastName;
             CI = ci;
+            Location = new Location("", "", "");
+            Contact = new Contact("", "");
 
         }
 

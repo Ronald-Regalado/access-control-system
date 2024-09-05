@@ -24,7 +24,7 @@ message UserScheduleDTO{
 	string id=1;
 	UserDTO user=2;
 	string UserId=3;
-	map<int64,string> schedule=4;
+	map<string,string> schedule=4;
 }
 message UserSchedules{
 	repeated UserScheduleDTO items=1;

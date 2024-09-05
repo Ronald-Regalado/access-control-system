@@ -32,7 +32,7 @@ message UserDTO{
 	string lastName=3;
 	string ci=4;
 	Location location=5;
-	string schoolLevel=6;
+	google.protobuf.StringValue schoolLevel=6;
 	Contact contact=7;
 }
 message Users{

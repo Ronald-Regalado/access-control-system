@@ -10,6 +10,7 @@ using AccessControlSystem.Application.Users.Commands.CreateUser;
 using AccessControlSystem.Application.Users.Queries.GetUserById;
 using AccessControlSystem.Application.Users.Queries.GetAllUsers;
 using AccessControlSystem.Application.Users.Commands.UpdateUser;
+using AccessControlSystem.Application.Users.Commands.DeleteUser;
 
 
 namespace AccessControlSystem.GrpcServices.Services
@@ -65,7 +66,7 @@ namespace AccessControlSystem.GrpcServices.Services
 
         public override Task<Empty> DeleteUser(DeleteRequest request, ServerCallContext context)
         {
-            var command = new UpdateUserCommand(_mapper.Map<Domain.Entities.Users.User>(request));
+            var command = new DeleteUserCommand(new Guid(request.Id));
 
             _mediator.Send(command);
 
@@ -73,3 +74,4 @@ namespace AccessControlSystem.GrpcServices.Services
         }
     }
 }
+

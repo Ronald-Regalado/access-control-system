@@ -48,7 +48,9 @@ namespace AccessControlSystem.Domain.Entities.UserSessions
         {
             User = user;
             BusyUnit = busyUnit;
-            StartTime = DateTime.Now;
+            StartTime = DateTime.UtcNow;
+            EndTime = DateTime.UtcNow;
+           
         }
         protected UserSession() { }
         #endregion

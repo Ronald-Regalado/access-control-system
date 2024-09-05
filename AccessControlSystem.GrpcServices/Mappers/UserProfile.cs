@@ -6,12 +6,12 @@ namespace AccessControlSystem.GrpcServices.Mappers
     {
         public UserProfile()
         {
-            CreateMap<Domain.Entities.Users.User, GrpcServices.Protos.UserDTO>()
+            CreateMap<Domain.Entities.Users.User, Protos.UserDTO>()
                 .ForMember(t => t.Id, o => o.MapFrom(s => s.Id.ToString()))
                 .ForMember(t => t.FirstName, o => o.MapFrom(s => s.FirstName))
                 .ForMember(t => t.LastName, o => o.MapFrom(s => s.LastName))
                 .ForMember(t => t.Ci, o => o.MapFrom(s => s.CI))
-                .ForMember(t => t.Location, o => o.MapFrom(s => new GrpcServices.Protos.Location()
+                .ForMember(t => t.Location, o => o.MapFrom(s => new Protos.Location()
                 {
                     State = s.Location.State,
                     City = s.Location.City,
@@ -19,13 +19,13 @@ namespace AccessControlSystem.GrpcServices.Mappers
                 }
                 ))
                 .ForMember(t => t.SchoolLevel, o => o.MapFrom(s => s.SchoolLevel))
-                .ForMember(t => t.Contact, o => o.MapFrom(s => new GrpcServices.Protos.Contact()
+                .ForMember(t => t.Contact, o => o.MapFrom(s => new Protos.Contact()
                 {
                     Mail=s.Contact.Mail,
                     Telephone=s.Contact.Telephone
                 }));
 
-            CreateMap< GrpcServices.Protos.UserDTO, Domain.Entities.Users.User>()
+            CreateMap< Protos.UserDTO, Domain.Entities.Users.User>()
                .ForMember(t => t.Id, o => o.MapFrom(s => new Guid(s.Id)))
                 .ForMember(t => t.FirstName, o => o.MapFrom(s => s.FirstName))
                 .ForMember(t => t.LastName, o => o.MapFrom(s => s.LastName))
