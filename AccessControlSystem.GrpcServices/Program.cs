@@ -32,7 +32,7 @@ namespace AccessControlSystem.GrpcServices
             {
                 AutoRegisterRequestProcessors = true,
             }
-            .RegisterServicesFromAssemblies(typeof(AssemblyReference).Assembly));
+            .RegisterServicesFromAssemblies(typeof(AccessControlSystem.Application.AssamblyReference).Assembly));
 
 
             builder.Services.AddSingleton("Data Source = CarDealerDB.sqlite");

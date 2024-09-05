@@ -21,7 +21,7 @@ message UnitDTO{
 	string id=1;
 	string maker=2;
 	string code=3;
-	string product=4;
+	google.protobuf.StringValue product=4;
 	bool isInUse=5;
 }
 message Units{
